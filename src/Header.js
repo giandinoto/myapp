@@ -1,14 +1,14 @@
 import React from 'react'
+import Nav from './Nav'
 
-const Header = () => {
+const Header = ( { nombre } ) => {
   return (
-    <header>
-           <h1>My e-Commerce </h1>
-           <ul>
-            <li><a href="#">Nav 1</a></li>
-            <li><a href="#">Nav 2</a></li>
-            <li><a href="#">Nav 3</a></li>
-           </ul>
+    <header id='layout-header' className='header'>
+          <h1 className='header___title'>Bienvenido { nombre } </h1>
+          <span className='material-icons'>
+            shopping_cart
+          </span>
+          <Nav />
     </header>
   )
 }
