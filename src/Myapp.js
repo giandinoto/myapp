@@ -1,15 +1,17 @@
 // rafc
-import Footer from './Footer'
-import Header from './Header'
+import Footer from './components/Footer'
+import Header from './components/Header'
 import Main from './Main'
 
 
 export const Myapp = () => {
 
-    const nombre = "Horacio"
-    const arr = [45,50,3,4,5]
+    const nombre = "Alejandro"
+    const arr = ["Ale",50,3,4,5]
     
     return (
+
+        
         <>
             <Header nombre = { nombre } />
             

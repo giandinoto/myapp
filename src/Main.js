@@ -1,29 +1,19 @@
 import React from 'react';
-import { useState } from 'react';
+
+import ItemCount from './components/ItemCount';
 
 const Main = ({ a, children }) => {
 
-    const [ estado, setEstado ] = useState(0);
-
-    const handleSumar = () => {
-        setEstado(estado+1)
-        
-    }
-    
-    const handleRestar = () => {
-        if(estado > 0 ){
-            setEstado(estado-1)
-        }
-    }
+    const onAdd = (quantity) => {
+        console.log(`Se añadieron ${quantity} productos al carrito`);
+        // Aquí puedes hacer lo que necesites con la cantidad
+      };
 
     return (
         <main>
-        <h2>Bienvenido {a[0]}!</h2> {/* Muestra el primer valor del array 'a' */}
-            <p>Tu edad es {a[1]}<br/></p>
-            <div>{children}</div>
-            <p>Mi contador va {estado}</p>
-            <button onClick={ handleSumar } >Sumar</button>
-            <button onClick={ handleRestar } >Restar</button>
+            <h2>Bienvenido {a[0]}!</h2> 
+            <br />
+            <ItemCount stock={5} initial={1} onAdd={onAdd} />
         
         </main>
     );
