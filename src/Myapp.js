@@ -1,8 +1,7 @@
 // rafc
 import Footer from './components/Footer'
 import Header from './components/Header'
-import Main from './Main'
-
+import ItemListContainer from './components/ItemListContainer'
 
 export const Myapp = () => {
 
@@ -10,16 +9,12 @@ export const Myapp = () => {
     const arr = ["Ale",50,3,4,5]
     
     return (
-
-        
+    
         <>
             <Header nombre = { nombre } />
-            
-            <Main a = { arr } >
-                <h3>Estos es un h3 </h3>
-                <p>Lorem ipsum </p>
-            </Main>
-            
+
+            <ItemListContainer  a = { arr } />
+
             <Footer />
         </>
     
