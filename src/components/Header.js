@@ -1,10 +1,11 @@
 import React from 'react'
 import Nav from './Nav'
+import { Link, NavLink } from 'react-router-dom'
 
-const Header = ( { nombre } ) => {
+const Header = ( ) => {
   return (
     <header id='layout-header' className='header'>
-          <h1 className='header___title'>Bienvenido { nombre } </h1>
+          <Link to="/"><h3 className='header___title'>Logo  </h3></Link>
           <Nav />
     </header>
   )

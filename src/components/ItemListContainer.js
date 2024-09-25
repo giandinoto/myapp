@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
 import ItemList from './ItemList';
 import productosIniciales from '../database/products.js'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
 
     var initial = 1
     const stockDisponible = 10;
@@ -20,7 +21,7 @@ import productosIniciales from '../database/products.js'
 
                 reject("Error obteniendo datos")
 
-            }, 3000 )
+            }, 2000 )
         })
     }
 
@@ -28,6 +29,11 @@ import productosIniciales from '../database/products.js'
 const ItemListContainer = ({ a, children }) => {
 
     const [ estado, setEstado ] = useState(initial)
+    const [ loading, setLoading ] = useState(true)
+    const { idCategoria } = useParams()
+    
+    //console.log(idCategoria)
+    
 
     const handleSumar = () => {
         if(estado < stockDisponible){
@@ -55,33 +61,44 @@ const ItemListContainer = ({ a, children }) => {
             .then(function(respuestaPromise) {
 
                 setItems(respuestaPromise);
+                console.log(idCategoria)
                 //console.log(respuestaPromise)
             })
             .catch(function(error) {
-                console.log(error);
+                //console.log(error);
+                
             })
             .finally(function(algo) {
-                console.log("Siempre se ejecuta el Finally");
+                //console.log("Siempre se ejecuta el Finally")
+                setLoading(false)
             });
     
-    }, []); 
+    }, [idCategoria]); 
     
 
-   return (
-        <main>
-            <h2>Bienvenido {a[0]}!</h2> 
-            <br />
-            <ItemList
-                estado={ estado }
-                handleRestar={ handleRestar }
-                handleSumar={ handleSumar }
-                onAdd={onAdd}
-                stockDisponible={ stockDisponible }
-                initial= { initial }
-                productosIniciales = { items }
-            />
-        </main>
-    );
+
+       
+
+    if(loading === true){
+    
+        return "Cargando..."; 
+    
+    }else{
+
+        return <ItemList
+        estado={ estado }
+        handleRestar={ handleRestar }
+        handleSumar={ handleSumar }
+        onAdd={onAdd}
+        stockDisponible={ stockDisponible }
+        initial= { initial }
+        productosIniciales = { items }
+        />
+
+    }
+            
+       
+   
 }
 
 export default ItemListContainer;

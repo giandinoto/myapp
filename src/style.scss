@@ -41,7 +41,58 @@ footer{
     text-align: center;
 }
 
-.cardProduct img{
-    max-width: 200px;
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .cardProduct {
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 3px;
+        background-color: #f5f5f5;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgb(0 0 0 /20%);
+
+            img{
+                max-width: 200px;
+
+                &:hover{
+                    opacity: 90%;
+                }
+            }
+
+            h4{
+                margin: 10px 0px 10px 0px;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            p{
+                margin: 5px 0px 0px 0px;
+                font-weight: 800;
+            }
+
+            &:hover{
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+    }
+
+    .botonera{
+        display: flex;
+        flex-wrap: wrap;
+
+        button{
+            margin: 0rem 0.5rem 0.5rem 0.5rem;
+            padding: 5px;
+            cursor: pointer;
+        }
+    }
+
+    
+    
 }
+
+
+
+
 
