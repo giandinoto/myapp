@@ -14,10 +14,10 @@ const ItemList = ({ handleRestar, handleSumar, estado, onAdd, initial, productos
                         handleSumar={handleSumar} // Agregar
                         onAdd={onAdd} // Agregar
                         key={index}
-                        nombre={producto.nombre}
-                        cantidad={producto.cantidad}
-                        precio={producto.precio}
-                        imagen={producto.imagen}
+                        id={producto.id}
+                        nombre={producto.title}
+                        precio={producto.price}
+                        imagen={producto.image}
                     />
                 ))
             

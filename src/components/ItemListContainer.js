@@ -1,12 +1,12 @@
 import ItemList from './ItemList';
-import productosIniciales from '../database/products.js'
+//import productosIniciales from '../database/products.js'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 
     var initial = 1
     const stockDisponible = 10;
 
-    function getDatos(){
+   /* function getDatos(){
 
         return new Promise((resolve, reject) => {
             
@@ -23,9 +23,9 @@ import { useParams } from 'react-router';
 
             }, 2000 )
         })
-    }
+    }*/
 
-
+    
 const ItemListContainer = ({ a, children }) => {
 
     const [ estado, setEstado ] = useState(initial)
@@ -57,27 +57,21 @@ const ItemListContainer = ({ a, children }) => {
     
     useEffect(() => { // Sólo en el primer render 
 
-        getDatos()
-            .then(function(respuestaPromise) {
+        fetch('https://fakestoreapi.com/products/')
+            .then(res=>res.json())
+            .then(productosIniciales=>setItems(productosIniciales)
+            
+        )
+        
+        .catch(function(error) {
+            console.log(error);
+        })
+        .finally(function(algo) {
+            console.log("Siempre se ejecuta el Finally")
+            setLoading(false)
+        }) 
 
-                setItems(respuestaPromise);
-                console.log(idCategoria)
-                //console.log(respuestaPromise)
-            })
-            .catch(function(error) {
-                //console.log(error);
-                
-            })
-            .finally(function(algo) {
-                //console.log("Siempre se ejecuta el Finally")
-                setLoading(false)
-            });
-    
     }, [idCategoria]); 
-    
-
-
-       
 
     if(loading === true){
     
@@ -97,8 +91,6 @@ const ItemListContainer = ({ a, children }) => {
 
     }
             
-       
-   
 }
 
 export default ItemListContainer;
