@@ -66,12 +66,19 @@ footer{
                 margin: 10px 0px 10px 0px;
                 font-family:Arial, Helvetica, sans-serif;
                 font-size: 12px;
+                font-weight: 300;
                 display: block;
                 white-space: nowrap;
                 width: 200px;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                color: #3483fa;
+               
+            }
+
+            h4:hover{
                 
+                text-decoration: underline;
             }
 
             p{
@@ -100,6 +107,25 @@ footer{
     
 }
 
+
+.itemDetalContainerCard {
+
+    img{
+        max-width: 200px;
+    }
+
+    h1{
+        font: bold 22px/34px "Proxima Nova";
+    }
+
+    p{
+        font: normal 12px/14px "Proxima Nova";
+    }
+
+    h2{
+        font: normal 36px/46px "Proxima Nova";
+    }
+}
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import ItemListContainer from './ItemListContainer'
-import ItemDeailContainer from './ItemDetailContainer'
+import ItemListContainer from './Item/ItemListContainer'
+import ItemDeailContainer from './Item/ItemDetailContainer'
 import Carrito from './Carrito'
 import { Route, Routes } from 'react-router'
 
