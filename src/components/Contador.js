@@ -15,7 +15,7 @@ const Contador = ( { initial, stockDisponible, onAdd} ) => {
     }  
     
     const hanldeAgregar = () => {
-        onAdd("variableDelHijo = Vino del contenedor hijo");
+        onAdd(estado);
         Navigate("../Carrito")
     }
 

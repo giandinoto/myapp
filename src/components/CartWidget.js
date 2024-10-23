@@ -11,8 +11,8 @@ const CartWidget = () => {
     <div>
         <span className='material-icons'>
           <NavLink to="/carrito/">shopping_cart</NavLink>
-          { cantidad } 
-        </span>
+         </span>
+         { cantidad > 0 ? cantidad : "" }
     </div>
   )
 }

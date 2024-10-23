@@ -14,7 +14,6 @@ const ItemList = ({  estado,  productosIniciales }) => {
                             nombre={producto.title}
                             precio={producto.price}
                             imagen={producto.image}
-                        
                         />
                     </article>
                 ))

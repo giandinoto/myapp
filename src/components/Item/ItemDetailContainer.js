@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Asegúrate de usar 'react-router-dom'
-import Contador from '../Contador';
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';  
+import Contador from '../Contador'
+import { contexto } from '../../context/CartContext';
 
 let initial = 1
 const stockDisponible = 5;
-
 const ItemDetailContainer = () => {
   
   const [item, setItems] = useState({});
   const [loading, setLoading] = useState(true);
-  const { idProducto } = useParams(); // Corrección: Invoca `useParams` como función
-
+  const { idProducto } = useParams(); // Corrección: Invoca `useParams` como función.
+  const { addItem } = useContext(contexto);
   useEffect(() => {
       // Realiza la solicitud cuando cambie `idProducto`
       fetch(`https://fakestoreapi.com/products/${idProducto}`)
@@ -25,28 +25,24 @@ const ItemDetailContainer = () => {
           setLoading(false);
         });
     }, [idProducto]); // Agrega `idProducto` como dependencia para el `useEffect`
-
     if (loading) {
       return <div>Cargando...</div>;
     }
-
-
-    const onAdd = (variableDelHijo) => {
-      console.log(variableDelHijo)
-    };
-
+    const onAdd = (cantidadSeleccionada) => {
+      console.log("cantidad seleccionada: ", cantidadSeleccionada); 
+      const itemsAlCarrito = { item, cantidadSeleccionada };
+      addItem(itemsAlCarrito);
+  };
     return (
       <article className='itemDetalContainerCard'>
-        <h2>Detalles del Producto</h2>
-        <img src={item.image} alt={item.title} />
-        <h1>{item.title}</h1>
-        <p>{item.description}</p>
-        <h2>Precio: $ {item.price}</h2>
+        <h2 className='item-detail-title'>Detalles del Producto</h2>
+        <img className='product-image' src={item.image} alt={item.title} />
+        <h1 className='product-title'>{item.title}</h1>
+        <p className='item-detail-description'>{item.description}</p>
+        <h2 className='item-detail-price'>Precio: $ {item.price}</h2>
+        <Contador onAdd={onAdd} initial={initial} stockDisponible={stockDisponible} />
+    </article>
 
-        <Contador onAdd={ onAdd } initial={ initial} stockDisponible= {stockDisponible}/>
-            
-      </article>
     );
 };
-
 export default ItemDetailContainer;
